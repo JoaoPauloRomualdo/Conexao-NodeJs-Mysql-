@@ -23,14 +23,17 @@ conn.connect ((err)=>{
     console.log('connected as id' + conn.threadId);
 });
 
-//Query Para mostrar dados do banco
-conn.query('SELECT * FROM test.users;',(err,rows, fields)=>{
-    if(!err){
-        console.log('Resultado',rows);
+//Cadastro de Dados
+conn.query('INSERT INTO users(nome, email)VALUES("JoaoAugusto","JoaoAugusto@gmail.com")',
+    (err,result)=>{
+        if(!err){
+            console.log('Usuario cadastrado com sucesso')
+        }
+        else{
+            console.log('Erro ao cadastra o usuario')
+        }
     }
-    else{
-        console.log('Erro ao realizar a consulta');
-    }
-});
+)
+
 
 app.listen(port);
